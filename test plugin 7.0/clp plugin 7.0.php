@@ -7,6 +7,7 @@ Author: CC dev
 */
 
 
+// adds a dedicated section for the plugin in the dashboard menu of word press
 add_action( 'admin_menu', 'wporg_options_page' );
 function wporg_options_page() {
     add_menu_page(
