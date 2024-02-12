@@ -82,6 +82,37 @@ if ($wpdb->last_error) {
 </form>
 
 
+<?php
+// Include WordPress core functionality
+require_once(ABSPATH . 'wp-load.php');
+
+// Global $wpdb variable
+global $wpdb;
+
+// Define table name
+$table_name = $wpdb->prefix . 'API_details';
+
+// SQL query to retrieve data from the table
+$sql = "SELECT * FROM $table_name";
+
+// Execute query
+$results = $wpdb->get_results($sql);
+
+// Check if there are any results
+if ($results) {
+    echo "<h2>API Details:</h2>";
+    echo "<ul>";
+    foreach ($results as $result) {
+        echo "<li>Name: " . esc_html($result->column1_name) . "</li>";
+        echo "<li>ID: " . esc_html($result->column2_ID) . "</li>";
+        echo "<li>URL: <a href='" . esc_url($result->column3_url) . "'>" . esc_html($result->column3_url) . "</a></li>";
+    }
+    echo "</ul>";
+} else {
+    echo "No data found.";
+}
+?>
+
 
 
 
